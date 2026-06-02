@@ -7,10 +7,10 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#e8ecf1;--text:#1e293b;--text-muted:#64748b;--card-bg:#fff;--card-border:#c8d4e2;--sidebar-bg:#1e293b;--sidebar-active:#3b82f6;--era-bg:#334155;--era-text:#e2e8f0;--av-bg:#c8d4e2;--av-text:#64748b}
-html{scroll-snap-type:y mandatory;scroll-behavior:smooth;font-size:16px;overflow-y:scroll}
-body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
-.main{margin-left:76px}
-@media(min-width:769px) and (max-width:1024px){html{font-size:18px}}@media(max-width:768px){.main{margin-left:44px}}
+html{scroll-behavior:smooth;font-size:16px;overflow:hidden}
+body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;user-select:none;height:100vh;overflow:hidden;-webkit-user-select:none;-webkit-touch-callout:none}
+.main{display:flex;flex-direction:row;margin-left:0;align-items:flex-start;overflow-x:scroll;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;height:100vh}
+.h-nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:300;display:flex;gap:20px;pointer-events:none}.h-nav button{width:48px;height:48px;border-radius:50%;background:rgba(92,58,30,.40);color:#e2e8f0;border:none;cursor:pointer;font-size:1.3rem;display:flex;align-items:center;justify-content:center;transition:background .2s,opacity .2s;backdrop-filter:blur(4px);pointer-events:auto}.h-nav button:active{background:rgba(92,58,30,.60)}.h-nav button svg{width:20px;height:20px}.h-nav button.hidden{opacity:0;pointer-events:none}@media(max-width:768px){.h-nav{bottom:16px;gap:16px}.h-nav button{width:44px;height:44px}.h-nav button svg{width:18px;height:18px}}@media(min-width:769px) and (max-width:1024px){html{font-size:18px}}@media(max-width:768px){.main{margin-left:0}.main{display:flex;flex-direction:row}}
 .sidebar{position:fixed;left:0;top:0;width:56px;height:100vh;background:none;display:flex;justify-content:center;z-index:100;opacity:0;transition:opacity .35s}
 .sidebar.visible{opacity:1}
 .sidebar-track{position:relative;width:2px;height:100%}
@@ -21,31 +21,30 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
 .sidebar-indicator::before{content:none}
 .sidebar-indicator-label{position:absolute;left:100%;top:50%;transform:translateY(-50%);margin-left:8px;font-size:.55rem;color:#1e293b;font-weight:700;white-space:nowrap;background:none;padding:0;z-index:101}
 @media(max-width:768px){.sidebar{width:44px}.sidebar-indicator{width:11px;height:11px}.sidebar-indicator-label{font-size:.45rem;margin-left:5px}.sidebar-marker{width:4px;height:4px}}
-.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:2rem;scroll-snap-align:start;margin-left:-76px}
+.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;width:80vw;flex-shrink:0;text-align:center;padding:3rem 2rem;scroll-snap-align:start;scroll-margin-left:10vw;margin:2.5vh 10vw 0 10vw;min-height:90vh;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.13)}
 .hero h1{font-size:2.8rem;font-weight:800;color:var(--text);margin-bottom:1rem;letter-spacing:.04em}
 .hero .author{font-size:1.1rem;color:var(--text-muted);margin-bottom:.3rem}
 .hero .reference{font-size:.9rem;color:var(--text-muted);margin-bottom:2rem}
 .hero .intro{margin-top:1rem;max-width:640px}
-.hero .intro p{font-size:.9rem;line-height:1.9;color:var(--text);text-align:left;font-style:italic}
-.hero .scroll-hint{font-size:2rem;color:var(--text-muted);cursor:pointer;animation:bounce 2s infinite;margin-top:2rem}
+.hero .intro p{font-size:.8rem;line-height:1.9;color:var(--text);text-align:left;font-style:italic}
+.hero .scroll-hint{font-size:2rem;color:var(--text-muted);cursor:pointer;animation:bounce 2s infinite;margin-top:2rem;display:none}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
-@media(max-width:768px){.hero h1{font-size:1.6rem}.hero{min-height:100vh;padding:1.5rem;margin-left:-44px}}
+@media(max-width:768px){.hero h1{font-size:1.6rem}.hero{min-height:90vh;padding:1.5rem;margin:2.5vh 8vw 0 8vw;scroll-margin-left:8vw;width:84vw}}
 .ov-card{border-radius:12px;padding:1.5rem;margin-bottom:2rem}
-.ov-card-merged{background:#fff;border:1px solid var(--card-border);box-shadow:0 4px 24px rgba(0,0,0,.13);margin:5vh 5vw;width:100%}
-#overview{scroll-snap-align:start;min-height:90vh;display:flex;align-items:center;justify-content:center;margin-left:-76px}
-@media(max-width:768px){#overview{padding:0;margin-left:-44px}.ov-card-merged{margin:3vh 4vw}}
+.ov-card-merged{background:#fff;border:1px solid var(--card-border);box-shadow:0 4px 24px rgba(0,0,0,.13);width:100%;margin:0}
+#overview{scroll-snap-align:start;scroll-margin-left:10vw;width:80vw;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin:2.5vh 10vw 0 10vw;min-height:90vh}
+@media(max-width:768px){#overview{padding:0;margin:2.5vh 8vw 0 8vw;scroll-margin-left:8vw;min-height:90vh;width:84vw}.ov-card-merged{margin:0}}
 .ov-main-title{font-size:1.25rem;font-weight:800;color:var(--text);text-align:center;margin-bottom:.8rem;padding-bottom:.8rem;border-bottom:2px solid var(--card-border)}
 .ov-card-head{font-size:1.05rem;font-weight:700;margin-bottom:.6rem;display:flex;align-items:center;gap:6px}
 .ov-card-icon{font-size:1.2rem}
 .ov-flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:.4rem;padding-bottom:.2rem}
 .ov-step{background:var(--era-bg);color:var(--era-text);padding:4px 12px;border-radius:16px;font-size:.78rem;white-space:nowrap;flex-shrink:0}
 .ov-arrow{color:var(--text-muted);font-size:.75rem;flex-shrink:0}
-.ov-section{border-bottom:1px solid var(--card-border);padding:1rem 0}
-.ov-section:last-child{border-bottom:none}
-.stage-title{scroll-snap-align:start;scroll-snap-stop:always;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;font-size:1.8rem;font-weight:800;color:var(--text);padding:0 10vw 0 0;margin:0}
-@media(max-width:768px){.stage-title{font-size:1.3rem;padding:0 8vw 0 0}}
-.stage-separator{scroll-snap-align:start;scroll-snap-stop:always;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--text-muted);font-size:1.1rem;font-style:italic;line-height:2;padding:2rem 10vw 2rem 0}
-.card{display:flex;flex-direction:column;gap:.6rem;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:1.5rem;margin:5vh 5vw 5vh 0;box-shadow:0 4px 24px rgba(0,0,0,.13);scroll-snap-align:start;min-height:90vh;overflow-y:auto;justify-content:center}
+.ov-section{padding:.6rem 0}
+.stage-title{scroll-snap-align:start;scroll-snap-stop:always;scroll-margin-left:15vw;width:80vw;flex-shrink:0;display:flex;align-items:center;justify-content:center;text-align:center;font-size:1.8rem;font-weight:800;color:var(--text);padding:3rem 2rem;margin:2.5vh 5vw 0 15vw;min-height:90vh;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.13)}
+@media(max-width:768px){.stage-title{font-size:1.3rem;padding:2rem 8vw;margin:2.5vh 8vw 0 12vw;scroll-margin-left:12vw;min-height:90vh;width:80vw}}
+.stage-separator{scroll-snap-align:start;scroll-snap-stop:always;scroll-margin-left:10vw;width:80vw;flex-shrink:0;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--text-muted);font-size:1.1rem;font-style:italic;line-height:2;padding:3rem 10vw;margin:2.5vh 10vw 0 10vw;min-height:90vh;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.13)}
+.card{display:flex;flex-direction:column;gap:.6rem;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:1.5rem;margin:2.5vh 5vw 0 15vw;box-shadow:0 4px 24px rgba(0,0,0,.13);scroll-snap-align:start;scroll-margin-left:15vw;width:80vw;flex-shrink:0;min-height:90vh;justify-content:center}
 .card-portraits{display:flex;flex-direction:row;gap:8px;flex-wrap:wrap}
 .card-header{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .card-chip{background:var(--era-bg);color:var(--era-text);padding:4px 14px;border-radius:20px;font-size:.82rem;font-weight:600;white-space:nowrap}
@@ -55,18 +54,21 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
 .card-fun{font-size:.85rem;margin-bottom:.6rem;line-height:1.7;color:var(--text-muted);font-style:italic}
 .card-insight{font-size:.85rem;line-height:1.7;color:var(--text);border-left:3px solid var(--sidebar-active);padding-left:.8rem}
 .card-insight::before{content:'\01F4A1 '}
-@media(max-width:768px){.card{padding:1rem;margin:3vh 4vw 3vh 0;min-height:94vh;gap:.5rem}.card-portraits{gap:6px}.card-header{gap:6px}.card-chip{font-size:.72rem;padding:3px 10px}.avatar{width:42px;height:42px;font-size:1.1rem}.card-core,.card-fun,.card-insight{font-size:.8rem}.card-figure{font-size:.85rem}}
-.conclusion{background:#fff;border:1px solid var(--card-border);border-radius:12px;padding:1.5rem;margin:5vh 5vw 5vh 0;box-shadow:0 4px 24px rgba(0,0,0,.13);scroll-snap-align:start;min-height:90vh;display:flex;flex-direction:column;justify-content:center}
+.card-core,.card-fun,.card-insight{opacity:0}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.card.revealed .card-core{animation:fadeInUp 1s ease forwards;animation-delay:0s}
+.card.revealed .card-fun{animation:fadeInUp 1s ease forwards;animation-delay:1s}
+.card.revealed .card-insight{animation:fadeInUp 1s ease forwards;animation-delay:2s}
+@media(max-width:768px){.card{padding:1rem;margin:2.5vh 8vw 0 12vw;min-height:94vh;scroll-margin-left:12vw;width:80vw;gap:.5rem;display:flex;flex-direction:column;justify-content:center}.card-portraits{gap:6px}.card-header{gap:6px}.card-chip{font-size:.72rem;padding:3px 10px}.avatar{width:42px;height:42px;font-size:1.1rem}.card-core,.card-fun,.card-insight{font-size:.8rem}.card-figure{font-size:.85rem}}
+.conclusion{background:#fff;border:1px solid var(--card-border);border-radius:12px;padding:1.5rem;margin:2.5vh 10vw 0 10vw;box-shadow:0 4px 24px rgba(0,0,0,.13);scroll-snap-align:start;scroll-margin-left:10vw;scroll-margin-right:10vw;width:80vw;flex-shrink:0;min-height:90vh;display:flex;flex-direction:column;justify-content:center}
 .conclusion h2{font-size:1.15rem;font-weight:800;margin-bottom:1rem;display:flex;align-items:center;gap:8px;color:var(--text)}
 .conclusion p{font-size:.85rem;line-height:1.7;color:var(--text);font-style:italic}
-@media(max-width:768px){.conclusion{padding:1rem;margin:3vh 4vw 3vh 0;min-height:94vh}.conclusion p{font-size:.8rem}}
-.nav-arrows{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:200;display:flex;flex-direction:column;gap:16px;pointer-events:none}
-.nav-arrow{width:40px;height:40px;border-radius:50%;background:rgba(92,58,30,.75);color:#e2e8f0;border:none;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;pointer-events:auto;transition:background .2s,opacity .2s;backdrop-filter:blur(4px)}
-.nav-arrow:active{background:rgba(92,58,30,.92)}
-.nav-arrow.hidden{opacity:0;pointer-events:none}
-@media(max-width:768px){.nav-arrows{right:8px;gap:13px}.nav-arrow{width:36px;height:36px;font-size:1rem}}
+@media(max-width:768px){.conclusion{padding:1rem;margin:1.5vh 8vw 0 8vw;min-height:94vh;scroll-margin-left:8vw;scroll-margin-right:8vw;width:84vw;display:flex;flex-direction:column;justify-content:center}.conclusion p{font-size:.8rem}}
 
-</style>
+.main::-webkit-scrollbar{display:none}
+  @media(max-width:768px){.stage-separator{padding:2rem 8vw;margin:2.5vh 8vw 0 8vw;scroll-margin-left:8vw;width:84vw;font-size:1rem;min-height:90vh}}
+  .trail-spacer{min-width:10vw;flex-shrink:0;scroll-snap-align:none}@media(max-width:768px){.trail-spacer{min-width:8vw}}
+  </style>
 </head>
 <body>
 
@@ -95,11 +97,6 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   </div>
 </aside>
 
-<div class="nav-arrows">
-  <button class="nav-arrow hidden" id="nav-up" aria-label="上一页">&#9650;</button>
-  <button class="nav-arrow" id="nav-home" aria-label="返回首页"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></button>
-  <button class="nav-arrow" id="nav-down" aria-label="下一页">&#9660;</button>
-</div>
 
 <div class="main">
 
@@ -108,7 +105,7 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   <div class="author">by YPF</div>
   <div class="reference">参考书籍：《A History of Mechanics》 René Dugas 1955</div>
   <div class="intro">
-    <p>本文基于《A History of Mechanics》（René Dugas，1955），沿时间顺序梳理力学从古希腊自然哲学到20世纪初相对论与量子力学的演化脉络，按五个阶段展开。每一个定律背后都有一段不为人知的故事：有人花十几年算数据却因一步算错否掉了正确答案，有人在啤酒厂里搅水测热量被当成怪人，也有人至死没等到自己的理论被认可。往下翻，看看这些公式是怎么「长」出来的。</p>
+    <p>本文基于《A History of Mechanics》（René Dugas，1955），沿时间顺序梳理力学从古希腊自然哲学到20世纪初相对论与量子力学的演化脉络，按五个阶段展开。每一个定律背后都有一段故事：有人花十几年算数据却因一步算错否掉了正确答案，有人在啤酒厂里搅水测热量被当成怪人，也有人至死没等到自己的理论被认可。往下翻，看看这些公式是怎么被写出来的。</p>
   </div>
   <div class="scroll-hint" onclick="document.getElementById('overview').scrollIntoView({behavior:'smooth'})">↓</div>
 </section>
@@ -157,13 +154,13 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   </div>
 </section>
 
-<div class="stage-separator">⚡ 坐稳，现在开始<br>跟着千年脚步，看力学如何从&#8220;为什么会动&#8221;<br>长成人类最精密的思想武器</div>
+<div class="stage-separator">⚡ 现在开始<br>跟着千年脚步，看力学如何从&#8220;为什么会动&#8221;<br>长成人类最精密的思想武器</div>
 
-<h2 class="stage-title" id="stage1">阶段一：起源与奠基（公元前4世纪 — 17世纪初）</h2>
+<h2 class="stage-title" id="stage1">阶段一：起源与奠基<br>（公元前4世纪 — 17世纪初）</h2>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">亚</span>
-        <span class="avatar">阿</span>
+    <span class="avatar">Ar</span>
+        <span class="avatar">Ar</span>
   </div>
   <div class="card-header">
     <span class="card-chip">希腊科学</span>
@@ -171,13 +168,13 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   </div>
   <div class="card-core">1. 亚里士多德（Aristotle，384-322 B.C.）：将力学融入自然哲学体系，提出「力=重量/质量×速度」的动力学定律，定性描述自由落体「重量与下落时间成反比」的规律，区分自然运动（如重物下落）与暴力运动（如抛体运动），主张地心说，认为地球位于宇宙中心，重物趋向地心是自然运动，同时提出虚速度原理的早期雏形，其理论主导西方力学近2000年<br>2. 阿基米德（Archimedes，287-212 B.C.）：首次将静力学构建为独立理论科学，基于8条实验公理（如等重等距则平衡、等重不等距则向长力臂侧倾斜等）通过数学演绎证明杠杆原理，提出浮力原理（浸没在流体中的物体受到的浮力等于排开流体的重量），系统计算三角形、抛物线段等几何图形的重心，是经典静力学的基础</div>
   <div class="card-fun">亚里士多德的理论被中世纪经院学者奉为权威，甚至到了14世纪，学者们还在纠结「抛出去的石头为什么不会立刻掉下来」，直到布里丹提出冲量理论才打破这个困局；阿基米德的杠杆原理被后世演绎出「给我一个支点，我能撬动地球」的名言，不过他本人更在意浮力和重心计算，曾用浮力原理帮国王鉴别王冠是否掺假</div>
-  <div class="card-insight">亚里士多德的动力学错得离谱，却统治了西方力学近两千年——一个错误答案被当成标准答案用了二十个世纪，可见“信权威”有多危险。阿基米德是另一种路子：先做实验找公理，再拿数学推导，这套方法论今天看平平无奇，但在当时简直是降维打击。他帮国王查王冠掺假这事也说明——很多科学突破，最初不过是为了解决一个具体到不能再具体的麻烦。</div>
+  <div class="card-insight">亚里士多德的动力学错得离谱，却统治了西方力学近两千年——一个错误答案被当成标准答案用了二十个世纪，可见"信权威"有多危险。阿基米德走了完全不同的路：从实验出发，用数学证明，两千多年前就奠定了科学方法论的基础。两人同属希腊时代，一个靠权威统治思想，一个靠实证改变世界——科学史上最早的岔路口，在这个时代就已经出现了。</div>
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">希</span>
-        <span class="avatar">帕</span>
-        <span class="avatar">欧</span>
+    <span class="avatar">He</span>
+        <span class="avatar">Pa</span>
+        <span class="avatar">Eu</span>
   </div>
   <div class="card-header">
     <span class="card-chip">亚历山大与阿拉伯文献</span>
@@ -185,12 +182,12 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   </div>
   <div class="card-core">1. 亚历山大港的希罗（Hero of Alexandria，I世纪 A.D.）：首次在杠杆（含非直杠杆）分析中引入力矩（moment）概念雏形，将轮轴等机械的研究归为圆的原理，隐含力矩的应用逻辑<br>2. 帕普斯（Pappus，IV世纪 A.D.）：首次尝试解决斜面平衡问题，借用阿基米德的角杠杆定律推导平衡条件但结果错误，同时给出重心的定义：通过多次悬挂重体确定垂直相交的唯一交点即为重心<br>3. 欧几里得伪作《力学问题》：出现「重量×力臂」的力矩定量表述，是静力学的重要早期来源</div>
   <div class="card-fun">希罗的力学著作没有直接流传下来，现在我们看到的版本是阿拉伯学者翻译后回传的，相当于「出口转内销」；帕普斯解不出的斜面平衡问题，被13世纪一个匿名学者轻松搞定，比伽利略、斯蒂文早了足足300年</div>
-  <div class="card-insight">帕普斯搞不定的斜面平衡，被13世纪一个连名字都没留下的学者解决了，早了伽利略三百年。这事有两个教训：一是前人的错误不等于白费，后人踩过才知道往哪走；二是你做出再牛的成果，如果没人帮你传播，可能就被埋进故纸堆里。阿拉伯学者帮希腊文献做了个“出口转内销”，功劳比他们自己意识到的都大。</div>
+  <div class="card-insight">前人的错误不等于白费，后人踩过的坑才知道往哪走；再牛的成果如果没人传播，也可能被埋进故纸堆。阿拉伯学者对希腊力学文献的保存与回传，其学术史价值远超出他们自身的认知——印刷术之前，学术传播的功劳不亚于原创本身。</div>
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">约</span>
-        <span class="avatar">匿</span>
+    <span class="avatar">Jo</span>
+        <span class="avatar">An</span>
   </div>
   <div class="card-header">
     <span class="card-chip">13世纪：乔丹努斯学派</span>
@@ -202,8 +199,8 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">布</span>
-        <span class="avatar">阿</span>
+    <span class="avatar">Je</span>
+        <span class="avatar">Al</span>
   </div>
   <div class="card-header">
     <span class="card-chip">14世纪：冲量理论</span>
@@ -215,8 +212,8 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">奥</span>
-        <span class="avatar">津</span>
+    <span class="avatar">Ni</span>
+        <span class="avatar">Ox</span>
   </div>
   <div class="card-header">
     <span class="card-chip">14世纪：运动学研究</span>
@@ -224,13 +221,13 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   </div>
   <div class="card-core">1. 奥雷斯姆（Nicole Oresme，1377年著《论天与地》）：用图形化方法表示「匀变质量」，提出「匀加速运动下落距离与时间平方成正比」的运动学规律，同时最早基于运动相对性和冲量理论提出地球自转的可能性，认为无法通过观测证明是天动还是地动，是哥白尼的先驱<br>2. 牛津计算者学派（14世纪）：正式确立匀加速运动的运动学规律，提出「物体从静止匀加速下落，连续相等时间的下落距离比为1:3:5…」的推论</div>
   <div class="card-fun">奥雷斯姆怼过托勒密的经典论点：「垂直射出去的箭，要是地球在转，箭落下来应该偏西边」，他用运动相对性直接反驳：「你跟着船跑的时候往上扔球，球还是会落回你手里，不会往后飞」，比伽利略早200年就提出了类似的思想实验</div>
-  <div class="card-insight">奥雷斯姆用"你在船上往上扔球球还掉回手里"这种思想实验，提前两百年把地球自转的相对性给论证了。他没用任何公式，就靠一个日常场景的类比把托勒密的经典论点给拆了。好的论证往往不需要太多术语，一个贴切的比喻就够了。</div>
+  <div class="card-insight">奥雷斯姆提前两百年用思想实验论证了地球自转的相对性，比伽利略早了整整两个世纪。他的方法值得注意：不用公式，只用日常场景类比——这种方法在当时的经院哲学环境中极其罕见，等于抢跑了两个世纪的认知。</div>
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">达</span>
-        <span class="avatar">哥</span>
-        <span class="avatar">开</span>
+    <span class="avatar">Le</span>
+        <span class="avatar">Ni</span>
+        <span class="avatar">Jo</span>
   </div>
   <div class="card-header">
     <span class="card-chip">文艺复兴与天文学</span>
@@ -238,13 +235,13 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   </div>
   <div class="card-core">1. 达·芬奇（Leonardo da Vinci，16世纪初）：业余研究者，完整引入力矩概念分析绕水平轴的重物平衡，讨论冲量与复合运动，提出水流定律与帕斯卡原理雏形，认为地球会因重物下落逐渐趋近球形，讨论鸟类飞行的重心原理，但理论混杂形而上学，缺乏严谨性<br>2. 哥白尼（Nicholas Copernicus，1543年著《天体运行论》）：提出日心说，否定地球是宇宙中心，认为地球存在自转、公转等多重运动，为后来开普勒、牛顿的天体力学研究奠定基础<br>3. 开普勒（Johannes Kepler，1609年提出行星第一、第二定律，1619年提出第三定律）：基于第谷的观测数据提出行星运动三大定律，提出「引力是物体间的相互吸引，与距离相关」，是连接经院力学与经典力学的关键人物</div>
   <div class="card-fun">达·芬奇力学上经常自相矛盾：一会儿说落体速度跟距离成正比，一会儿又说跟时间成正比，还觉得重物落向地球是“想回家”，充满玄学色彩；开普勒算了十几年行星数据，中途算错一次把自己的正确结论给否了，直到1618年才重新确认，他还把行星角速度和音乐音符对应，坚信宇宙符合“毕达哥拉斯和谐”</div>
-  <div class="card-insight">达·芬奇天才毋庸置疑，但力学上自相矛盾——灵感再多，不验证就是扯淡。开普勒算了十几年数据，关键步骤错一次白算好几年。哥白尼把地球从宇宙中心挪开，靠的不是新观测，而是“模型更简洁”这条审美原则——有时候最有力量的论证不是证对，而是证美。</div>
+  <div class="card-insight">达·芬奇天才毋庸置疑，但力学上自相矛盾——灵感再多，不验证就是扯淡。哥白尼把地球从宇宙中心挪开，靠的不是新观测，而是"模型更简洁"这条审美原则——有时候最有力量的论证不是证对，而是证美。</div>
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">斯</span>
-        <span class="avatar">伽</span>
-        <span class="avatar">乌</span>
+    <span class="avatar">Si</span>
+        <span class="avatar">Ga</span>
+        <span class="avatar">Gu</span>
   </div>
   <div class="card-header">
     <span class="card-chip">静力学复兴</span>
@@ -254,11 +251,11 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   <div class="card-fun">斯蒂文把一串球搭斜面上，用“永动机不可能”一个逻辑闭环直接焊死。伽利略用斜面“稀释重力”，水钟计时、挡板分段，把快得看不清的自由落体变成可测量的实验</div>
   <div class="card-insight">斯蒂文用“永动机不可能”一条反证把斜面平衡证死——简单逻辑比复杂推导更有杀伤力。伽利略把自由落体“变慢”让不可测变可测——实验科学的精髓是会不会把问题变慢。</div>
 </div>
-<h2 class="stage-title" id="stage2">阶段二：经典力学体系的建立（17世纪 — 18世纪初）</h2>
+<h2 class="stage-title" id="stage2">阶段二：经典力学体系的建立<br>（17世纪 — 18世纪初）</h2>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">梅</span>
-        <span class="avatar">罗</span>
+    <span class="avatar">Ma</span>
+        <span class="avatar">Gi</span>
   </div>
   <div class="card-header">
     <span class="card-chip">科学网络与微积分前奏</span>
@@ -270,7 +267,7 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">托</span>
+    <span class="avatar">Ev</span>
   </div>
   <div class="card-header">
     <span class="card-chip">流体流出定律</span>
@@ -282,8 +279,8 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">笛</span>
-        <span class="avatar">帕</span>
+    <span class="avatar">Re</span>
+        <span class="avatar">Bl</span>
   </div>
   <div class="card-header">
     <span class="card-chip">解析方法与实验科学</span>
@@ -295,10 +292,10 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">沃</span>
-        <span class="avatar">雷</span>
-        <span class="avatar">惠</span>
-        <span class="avatar">马</span>
+    <span class="avatar">Jo</span>
+        <span class="avatar">Ch</span>
+        <span class="avatar">Ch</span>
+        <span class="avatar">Ed</span>
   </div>
   <div class="card-header">
     <span class="card-chip">碰撞定律</span>
@@ -310,7 +307,7 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">牛</span>
+    <span class="avatar">Is</span>
   </div>
   <div class="card-header">
     <span class="card-chip">经典力学体系</span>
@@ -318,11 +315,11 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   </div>
   <div class="card-core">牛顿（Isaac Newton，1687年出版《自然哲学的数学原理》）完成经典力学体系构建：1. 核心概念：引入「质量」定义，区分绝对时间/空间与相对运动；2. 三大运动定律：惯性定律（物体不受力时保持静止或匀速直线运动）、加速度与合力成正比（F=ma）、作用力与反作用力大小相等方向相反；3. 力的合成：平行四边形法则的动态推导；4. 天体力学：用「向心力与距离平方成反比」解释开普勒行星定律，提出万有引力定律，统一天地运动规律；5. 其他：验证潮汐成因、岁差现象，完善流体阻力、离心力等理论</div>
   <div class="card-fun">传说牛顿是被苹果砸了才想到万有引力，其实这是后人编的段子，他的万有引力想法是长期研究天体数据的结果，最早能追溯到他对月亮轨道的计算；牛顿和莱布尼茨为了「微积分是谁发明的」吵了一辈子，连带力学领域的活力之争也掺和了私人恩怨，两边的支持者互相攻击了几十年</div>
-  <div class="card-insight">苹果砸牛顿的故事是编的，但万有引力的想法的确是多年泡在天文数据里磨出来的。牛顿和莱布尼茨的微积分之争，后半程基本变成了私人恩怨，两边粉丝互相攻击了几十年。一个本可以合作的领域，被面子活生生搞成了拉锯战——搞学术最怕的就是把“谁先说的”看得比“说了什么”更重。</div>
+  <div class="card-insight">牛顿之前，天上和地上是两套力学体系——亚里士多德管地上的，开普勒管天上的。牛顿用三条定律加万有引力，一把把天地统一了。这不是简单地加了个新公式，而是彻底改变了对"力"这个概念的认知：力不再是物体自身的属性，而是物体之间的相互作用。这种概念的重新定义，比任何具体发现都更具革命性。</div>
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">莱</span>
+    <span class="avatar">Go</span>
   </div>
   <div class="card-header">
     <span class="card-chip">活力论战</span>
@@ -335,8 +332,8 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
 <h2 class="stage-title" id="stage3">阶段三：分析力学的崛起（18世纪）</h2>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">让</span>
-        <span class="avatar">丹</span>
+    <span class="avatar">Jo</span>
+        <span class="avatar">Da</span>
   </div>
   <div class="card-header">
     <span class="card-chip">虚功原理的发展</span>
@@ -344,11 +341,11 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   </div>
   <div class="card-core">1. 让·伯努利（Jean Bernoulli，1717年致瓦里尼翁的信中明确虚功原理）：正式提出虚功原理的一般形式，通过力的合成三条假设（结合律、同向相加、等力合力沿角平分线）推导平行四边形法则，成为分析力学的基础<br>2. 丹尼尔·伯努利（Daniel Bernoulli，1726年发表《力学原理检验与力合成几何证明》，1738年出版《流体动力学》）：用能量观点研究流体力学，提出伯努利方程（理想流体中压强+动能密度+重力势能密度为常量），同时讨论力的合成的必要真理属性，支持活力守恒</div>
   <div class="card-fun">伯努利家族是学术界的「父子兵」，让·伯努利是丹尼尔的爸爸，爷俩都是力学大牛，但丹尼尔的流体力学成果发表后，他爹居然嫉妒儿子比自己有名，父子俩直接闹翻，老死不相往来；丹尼尔的伯努利方程最早是用来解释「为什么水管细的地方水压小」，后来被广泛应用到航空、水利各个领域，他自己都没想到这个原理这么有用</div>
-  <div class="card-insight">伯努利父子都是大牛，问题在于儿子丹尼尔的流体力学成果火了之后，当爹的居然嫉妒了，父子翻脸老死不相往来。学术圈里最尴尬的事莫过于此：你培养了一个天才，然后发现他比你更天才，你就破防了。丹尼尔的伯努利方程也是典型——他最初只是想解释“水管细的地方为什么水压小”，压根没想到后来会变成航空、水利的基石公式。</div>
+  <div class="card-insight">让·伯努利的虚功原理和丹尼尔的伯努利方程，父子两代人各开了一扇门——一个从静力学进入分析力学的内核，一个从流体力学打通能量守恒的路径。学术史上最好的传承不是复制，而是每个承继者在不同方向上的延伸：父子不是接力跑同一条道，而是各走了一条新路。</div>
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">欧</span>
+    <span class="avatar">Le</span>
   </div>
   <div class="card-header">
     <span class="card-chip">分析力学的系统化</span>
@@ -356,11 +353,11 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   </div>
   <div class="card-core">欧拉（Leonhard Euler，1736年出版《力学》，1760年出版《刚体运动理论》）：1. 《力学》：首次用分析方法系统阐述质点动力学，定义力为运动改变的原因，推导质点运动微分方程，认为力是派生概念，基于运动变化定义；2. 《刚体运动理论》：提出刚体运动的欧拉方程，定义惯性主轴、刚体角动量变化规律，系统计算刚体的转动惯量，奠定刚体力学基础，同时明确惯性中心（即质心）的定义，与仅考虑重力的重心概念区分</div>
   <div class="card-fun">欧拉是数学和力学界的「卷王」，一辈子写了800多篇论文，晚年双目失明之后还能靠心算做研究，刚体力学、流体力学、分析力学都有他的名字，现在学力学的人几乎天天都要用「欧拉公式」「欧拉方程」，相当于被他「支配」了一整个学科</div>
-  <div class="card-insight">欧拉一生的产出量放在今天就是学术圈的“时间管理大师”，80多岁双目失明后还能心算做研究。但他最厉害的不是勤奋，而是系统化的能力——别人零散提出的力学规律，到他手里能变成一套自洽的微分方程体系。学问和知识体系的区别就在这：前者是一堆事实，后者是有结构的框架。</div>
+  <div class="card-insight">欧拉最厉害的不是勤奋，而是系统化的能力——别人零散提出的力学规律，到他手里能变成一套自洽的微分方程体系。他把牛顿时代用几何语言写的力学翻译成了分析语言，从此力学可以用微积分直接处理。学问和知识体系的区别就在这：前者是一堆事实，后者是有结构的框架。</div>
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">达</span>
+    <span class="avatar">Je</span>
   </div>
   <div class="card-header">
     <span class="card-chip">动静法原理</span>
@@ -368,14 +365,14 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   </div>
   <div class="card-core">达朗贝尔（Jean le Rond d’Alembert，1743年出版《动力学专论》）：1. 提出达朗贝尔原理：将动力学问题转化为静力学平衡问题，即系统的真实运动可分解为保留的运动和抵消的运动，约束反力与抵消的运动平衡，统一处理约束系统的运动；2. 用该原理解释碰撞、摆动中心、活力守恒等问题，推动分析力学发展；3. 讨论「力学定律是必然真理还是偶然真理」的哲学问题，主张力学应基于清晰概念而非形而上学假设</div>
   <div class="card-fun">达朗贝尔是个弃婴，被放在巴黎圣让·勒朗教堂的台阶上，因此取了教堂的名字，被一位玻璃匠收养，最后成了顶尖学者；他说自己的达朗贝尔原理是「把动力学简化成静力学」，结果拉格朗日到处说「达朗贝尔把动力学归为静力学」，达朗贝尔本人还特意反驳：「我才没这么说，这三个原理明明是完全不同的！」，两个人还因为这个说法拌了几句嘴</div>
-  <div class="card-insight">达朗贝尔的身世本身就够励志——弃婴，被玻璃匠收养，最后成了法国顶尖学者。他提出的达朗贝尔原理本质是“把动力学问题当成静力学来解”，但拉格朗日到处说他“把动力学归为静力学”，他本人还不乐意了，两人为三句话的表述拌了好几年的嘴。这提醒我们：给别人的理论做总结的时候，措辞谨慎一点，不然原作者会追着你纠正。</div>
+  <div class="card-insight">达朗贝尔原理的哲学贡献比技术贡献更大：它证明了动力学问题可以被"降级"为静力学问题处理。这在当时是方法论上的突破——不是发明了新的物理定律，而是找到了更聪明的解题框架。学术史上，换个角度看老问题往往比新发现更有价值。</div>
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">费</span>
-        <span class="avatar">莱</span>
-        <span class="avatar">莫</span>
-        <span class="avatar">欧</span>
+    <span class="avatar">Pi</span>
+        <span class="avatar">Go</span>
+        <span class="avatar">Pi</span>
+        <span class="avatar">Le</span>
   </div>
   <div class="card-header">
     <span class="card-chip">最小作用量原理</span>
@@ -387,10 +384,10 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">克</span>
-        <span class="avatar">达</span>
-        <span class="avatar">欧</span>
-        <span class="avatar">博</span>
+    <span class="avatar">Al</span>
+        <span class="avatar">Je</span>
+        <span class="avatar">Le</span>
+        <span class="avatar">Je</span>
   </div>
   <div class="card-header">
     <span class="card-chip">流体力学一般方程</span>
@@ -400,12 +397,24 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   <div class="card-fun">达朗贝尔佯谬刚提出来的时候大家都觉得不可思议：「水流动怎么可能对物体没有阻力？」，直到后来大家意识到这是理想流体的假设导致的，实际流体有粘性才会有阻力，这个「佯谬」反而帮大家搞清楚了理想流体和实际流体的区别；博尔达除了研究流体，还是个军事工程师，发明了博尔达计数法，现在投票选举有时候还在用</div>
   <div class="card-insight">达朗贝尔佯谬刚出来的时候，大家都觉得荒谬：“水流动怎么可能对物体没阻力？”后来才反应过来这是理想流体的假设导致的结果——不是理论错了，是假设范围画得太宽了。博尔达除了研究流体力学，还搞了个投票计数法叫博尔达计数，到现在选举还有国家在用。做力学研究顺便发明了一套投票规则——学术跨界这件事真的没有上限。</div>
 </div>
+<div class="card">
+  <div class="card-portraits">
+    <span class="avatar">Jo</span>
+  </div>
+  <div class="card-header">
+    <span class="card-chip">分析力学的建立</span>
+    <span class="card-figure">拉格朗日</span>
+  </div>
+  <div class="card-core">拉格朗日（Joseph-Louis Lagrange，1788年出版《分析力学》）：用广义坐标和最小作用量原理统一静力学与动力学，提出拉格朗日方程，将力学纳入纯分析体系</div>
+  <div class="card-fun">拉格朗日的《分析力学》全书无一张几何图，全靠代数推导。他写这本书的时候说「不需要画图，只需要代数运算」，结果后来学力学的人对着满页公式掉头发。他还因为给达朗贝尔的理论总结得过于粗暴，到处说「达朗贝尔把动力学归为静力学」，达朗贝尔本人特意反驳，两人为这个说法拌了好几年的嘴</div>
+  <div class="card-insight">拉格朗日的分析力学是一次范式转换——力学不再依赖几何直觉，而是纳入统一的变分框架。这为后来处理任意自由度的复杂系统铺平了道路：拉格朗日方程是哈密顿力学的起点，也是量子场论中拉格朗日量方法的先祖。学术史上，剥离直觉、拥抱抽象形式化，往往比增加一个具体结论更具长远价值。</div>
+</div>
 <h2 class="stage-title" id="stage4">阶段四：19世纪的深化与拓展</h2>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">迈</span>
-        <span class="avatar">焦</span>
-        <span class="avatar">亥</span>
+    <span class="avatar">Ju</span>
+        <span class="avatar">Ja</span>
+        <span class="avatar">He</span>
   </div>
   <div class="card-header">
     <span class="card-chip">能量守恒的完善</span>
@@ -413,26 +422,25 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   </div>
   <div class="card-core">19世纪30-50年代，迈尔、焦耳、亥姆霍兹等人确立能量守恒定律，将活力（动能）与势能、热能等统一为能量范畴，证明经典力学框架下能量在封闭系统内守恒，成为贯穿后续所有物理领域的普适原理</div>
   <div class="card-fun">焦耳做实验的时候，为了测热功当量，居然在啤酒厂里用水轮机带动搅水器，测水温升高的数值，被啤酒厂工人当成怪人；亥姆霍兹最初提出能量守恒的时候，被学界质疑「凭什么说能量不会消失」，直到焦耳的实验数据公开才被广泛认可</div>
-  <div class="card-insight">焦耳在啤酒厂里用水轮机搅水测热功当量的时候，估计连他自己都觉得自己挺“非主流”的。亥姆霍兹提出能量守恒时也是被各种质疑，直到焦耳的数据出来才平息争议。这说明了一个朴素的道理：先别管实验地点有多奇怪，数据能说话就行。</div>
+  <div class="card-insight">能量守恒定律的确立靠的不是一个人的天才灵感，而是三个不同背景的人从不同方向同时推进——迈尔是医生、焦耳是酿酒师之子、亥姆霍兹是军医出身。三个人都不是传统意义上的"物理学家"，却联手建成了物理学最坚固的一块基石。学科边界在重大发现面前从来不是壁垒。</div>
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">拉</span>
-        <span class="avatar">哈</span>
+    <span class="avatar">Wi</span>
   </div>
   <div class="card-header">
-    <span class="card-chip">分析力学的进一步发展</span>
-    <span class="card-figure">拉格朗日 &amp; 哈密顿</span>
+    <span class="card-chip">哈密顿力学的建立</span>
+    <span class="card-figure">哈密顿</span>
   </div>
-  <div class="card-core">1. 拉格朗日（Joseph-Louis Lagrange，1788年出版《分析力学》）：用纯分析方法统一静力学与动力学，提出拉格朗日方程，全书无一张几何图，全靠公式推导<br>2. 哈密顿（William Rowan Hamilton，1834-1835年提出正则方程和哈密顿原理）：将最小作用量原理推广为更普适的形式，成为后续理论物理的核心数学工具</div>
-  <div class="card-fun">拉格朗日的《分析力学》被爱因斯坦夸是「科学著作的艺术品」，他写这本书的时候说「不需要画图，只需要代数运算」，结果后来学力学的人对着满页公式掉头发；哈密顿是爱尔兰的天才数学家，12岁就会13种语言，最初研究光学，结果顺手把分析力学推到了新高度，他自己都没想到他的方程后来成了量子力学的基础</div>
-  <div class="card-insight">拉格朗日的《分析力学》全篇没有一张几何图，全靠代数推导。爱因斯坦说它是“科学著作的艺术品”，后来学力学的人翻开这本书只想哭——因为没有图，全是公式。哈密顿更绝，本行是光学，顺手把分析力学推到了他自己都没想到的高度——他去世很多年后，哈密顿量成了量子力学的最核心工具。有时候，最牛的贡献是你根本没打算做的那个。</div>
+  <div class="card-core">哈密顿（William Rowan Hamilton，1834-1835年提出正则方程和哈密顿原理）：将最小作用量原理推广为更普适的形式，提出哈密顿正则方程和哈密顿原理，成为后续理论物理的核心数学工具</div>
+  <div class="card-fun">哈密顿是爱尔兰的天才数学家，12岁就会13种语言，最初研究光学，结果顺手把分析力学推到了新高度。他自己都没想到他的方程后来成了量子力学的基础——去世很多年后，哈密顿量成了物理学最核心的概念之一</div>
+  <div class="card-insight">哈密顿原理的厉害之处在于，它把整个力学系统的全部信息压缩进了一个标量函数——哈密顿量。这个抽象化的代价是当时的物理学家觉得它"太数学了不好用"，但百年后量子力学一出，大家都回来找哈密顿。数学工具的超前性往往要等几十年甚至上百年才被物理学"追上"，这个间隔本身就是学术史最值得玩味的现象。</div>
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">柯</span>
-        <span class="avatar">纳</span>
-        <span class="avatar">斯</span>
+    <span class="avatar">Au</span>
+        <span class="avatar">Cl</span>
+        <span class="avatar">Ge</span>
   </div>
   <div class="card-header">
     <span class="card-chip">连续介质力学的拓展</span>
@@ -440,13 +448,13 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   </div>
   <div class="card-core">1. 柯西（Augustin-Louis Cauchy，19世纪20年代引入应力张量概念）：建立弹性力学的完整理论，提出柯西应力张量描述物体内力的分布<br>2. 纳维（Claude-Louis Navier，1821年）、斯托克斯（George Gabriel Stokes，1845年）完善粘性流体力学方程（N-S方程），将欧拉的理想流体理论拓展到实际流体场景</div>
   <div class="card-fun">纳维最初推导N-S方程的时候还带着分子假设，结果后来斯托克斯直接用连续介质假设修正，之前的分子假设完全被抛弃；N-S方程到现在都是流体力学最核心的方程，但因为太难求解，千禧年大奖七大难题里就有它的存在性证明问题，悬赏100万美元</div>
-  <div class="card-insight">纳维推 N-S 方程时用的分子假设后来被斯托克斯直接砍掉了，换成了连续介质假设——这说明理论迭代本来就是“前人写初稿，后人改 bug”。N-S 方程到今天都是流体力学的心脏，但它的存在性证明至今挂在千禧年七大难题榜上，悬赏 100 万美元。基础研究的魅力就在这：题越基础，解越难。</div>
+  <div class="card-insight">N-S 方程从纳维到斯托克斯的迭代揭示了一个规律：好理论往往不是一次成型的，而是后人反复打磨的结果。今天它统治着从天气预报到飞机设计的所有流体计算，但它的解的存在性依然是个数学上的开放问题——过去两百年我们一直在用这个方程，却还没完全理解它。工具可以被广泛应用，但底层原理的答案可以等得更久。</div>
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">麦</span>
-        <span class="avatar">迈</span>
-        <span class="avatar">莫</span>
+    <span class="avatar">Ja</span>
+        <span class="avatar">Al</span>
+        <span class="avatar">Ed</span>
   </div>
   <div class="card-header">
     <span class="card-chip">电磁学与力学的交叉讨论</span>
@@ -454,11 +462,11 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   </div>
   <div class="card-core">1. 麦克斯韦（James Clerk Maxwell，1865年建立电磁场理论）：提出电磁波速与光速一致，暗示经典力学的绝对时空观与电磁现象存在冲突，为相对论的诞生埋下伏笔<br>2. 以太理论：试图用经典力学模型解释光的传播，认为宇宙空间充满「以太」作为光的传播介质，最终因迈克尔逊-莫雷实验（1887年）的结果被证伪</div>
   <div class="card-fun">迈克尔逊和莫雷做以太实验的时候，本来想证明以太存在，结果测出来光速各个方向都一样，直接把以太理论锤死了，反而帮爱因斯坦铺了路；麦克斯韦死前还在纠结电磁波和以太的关系，他的遗稿里还有没算完的以太模型公式，结果他去世没多久实验就证明以太不存在了</div>
-  <div class="card-insight">迈克尔逊和莫雷费了老大劲搭实验想证明以太存在，结果测出来光速各个方向都一样——直接把以太理论判了死刑。科学史上最戏剧性的反转往往来自“失败的实验”：你想证明 A 存在，结果证明了 A 不存在，顺便给 B 的诞生清空了场地。</div>
+  <div class="card-insight">迈克尔逊-莫雷实验的精度在当时是极限级的——他们用干涉仪测到的光速差甚至小于地球公转速度的十分之一。这么精密的实验给出的却是"什么都没测到"的零结果。但正是这个零结果成了相对论最有力的前奏：有时候，一次什么都没发现的实验，比一百次"找到东西了"的实验更值钱。</div>
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">玻</span>
+    <span class="avatar">Lu</span>
   </div>
   <div class="card-header">
     <span class="card-chip">统计力学的诞生</span>
@@ -466,12 +474,12 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   </div>
   <div class="card-core">玻尔兹曼（Ludwig Boltzmann，19世纪70-80年代将统计方法引入力学）：建立分子动理论，用微观粒子的力学运动解释宏观热力学规律，架起了微观力学与宏观热现象的桥梁，提出玻尔兹曼熵公式S=k lnΩ</div>
   <div class="card-fun">玻尔兹曼的统计学观点当时被很多人反对，他觉得特别孤独，最后1906年自杀去世，直到后来量子力学诞生，大家才意识到他的理论有多超前；他墓碑上刻的就是熵公式S=k log W，是他一生学术成就的最高象征</div>
-  <div class="card-insight">玻尔兹曼一生都在跟反对者辩论，最后在孤独中自杀。直到量子力学崛起，大家才发现他的统计观点有多超前。他墓碑上刻的就是那个 S=k log W——他一生最重要的成果，最终被刻在了石头上，而不是被埋进争议里。超前时代太远的人，往往等不到被认可的掌声，但这不影响他们是对的。</div>
+  <div class="card-insight">玻尔兹曼用统计方法架起了微观力学与宏观热力学之间的桥梁，这条路的得失至今仍是物理学争论的焦点之一。他生前被孤立，死后统计力学成为量子革命的前提——学术史上，被同时代否定最狠的人，往往在复盘时最接近真相。</div>
 </div>
 <h2 class="stage-title" id="stage5">阶段五：现代力学革命（20世纪初）</h2>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">爱</span>
+    <span class="avatar">Al</span>
   </div>
   <div class="card-header">
     <span class="card-chip">相对论力学</span>
@@ -483,9 +491,9 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
 </div>
 <div class="card">
   <div class="card-portraits">
-    <span class="avatar">德</span>
-        <span class="avatar">海</span>
-        <span class="avatar">薛</span>
+    <span class="avatar">Lo</span>
+        <span class="avatar">We</span>
+        <span class="avatar">Er</span>
   </div>
   <div class="card-header">
     <span class="card-chip">波动力学与量子力学</span>
@@ -493,7 +501,7 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   </div>
   <div class="card-core">1. 德布罗意（Louis de Broglie，1923年提出物质波假设）：认为所有实物粒子都具有波粒二象性，提出德布罗意波长公式λ=h/p<br>2. 海森堡（Werner Heisenberg，1925年建立矩阵力学）、薛定谔（Erwin Schr f6dinger，1926年建立波动力学）：放弃微观过程的连续性与绝对决定论，用概率描述原子尺度的物理现象，提出测不准原理ΔxΔp≥h/4π，是比相对论更激进的范式革命</div>
   <div class="card-fun">德布罗意本来是学历史的，半路转行学物理，博士论文里提出物质波，答辩的时候评委们都觉得太离谱，差点没让他毕业，结果后来这个理论拿了诺贝尔奖；量子力学里的「测不准原理」完全打破了经典力学「只要知道初始条件就能预测所有未来」的决定论观点，连爱因斯坦都接受不了，说「上帝不掷骰子」，和玻尔吵了一辈子，直到去世都没认可量子力学的完备性</div>
-  <div class="card-insight">德布罗意从历史系半路出家学物理，博士论文提出物质波，答辩评委觉得太离谱差点没让他毕业——结果这个“离谱”后来拿了诺贝尔奖。量子力学打破了经典力学“知道初始条件就能预测一切”的决定论，连爱因斯坦都受不了，放话说“上帝不掷骰子”，跟玻尔吵了一辈子。但争论到最后，实验数据站量子力学这边——科学史反复证明一个道理：直觉再强，也拗不过实验数据。</div>
+  <div class="card-insight">量子力学对力学的冲击比相对论更深：相对论只是修改了时空观，量子力学却从根本上否定了"拉普拉斯妖"——即知道所有初始条件就能预测一切未来的经典决定论。这是力学史上第二次范式转换（第一次是牛顿用数学取代哲学思辨），而这一次，它告诉我们：自然在最底层就是不确定的。</div>
 </div>
 
 
@@ -501,8 +509,9 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   <h2>📜 结语</h2>
   <p>回顾两千多年的力学史，每一次突破都有清晰的三段式脚本：旧理论碰到解释不了的实验事实 → 有人敢说“旧的错了” → 新框架把旧理论变成自己的特例。亚里士多德的动力学被冲量理论推翻，冲量理论又被牛顿三定律吸收为特例，牛顿的绝对时空被相对论在光速极限下变为近似，牛顿的决定论被量子力学用概率框架重写——驱动力始终是两个朴素的问题：“这个现象怎么解释？”和“有没有更底层的规律？”<br><br>而力学史最迷人的地方在于：最难的题往往在最基础的地方。流体力学中的湍流、N-S方程的存在性——这些问题挂了上百年还没有彻底解决。力学不是一门“已经完成的学科”，而是一条仍在延伸的路。</p>
  <p style="margin-top:2rem;color:var(--text-muted)">感谢您的耐心阅读，该时间线截止为1955年，再其后内容大多都可以通过教科书去查阅了。该页面基于书籍，借助 WorkBuddy 进行整理并制作。本人仔细进行了校对，但难免遗漏和错误之处，欢迎指出。</p>
- <p style="margin-top:.5rem;color:var(--text-muted);font-style:normal">—— 鹏飞（XHS：飞哥大爷爷）</p>
 </section>
+
+<div class="trail-spacer" aria-hidden="true"></div>
 
 </div>
 
@@ -517,15 +526,20 @@ document.addEventListener('DOMContentLoaded',function(){
     if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c')){e.preventDefault();}
   });
   /* ---- end copy protection ---- */
+  /* ---- card reveal animation ---- */
+  var revealObserver=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){entry.target.classList.add('revealed');}
+    });
+  },{threshold:0.15});
+  document.querySelectorAll('.card').forEach(function(card){revealObserver.observe(card);});
+  /* ---- end card reveal ---- */
   var sidebarEl=document.querySelector('.sidebar');
   var sidebar=document.querySelector('.sidebar-track');
   var markers=sidebar.querySelectorAll('.sidebar-marker');
   var indicator=document.querySelector('.sidebar-indicator');
   var indicatorLabel=document.querySelector('.sidebar-indicator-label');
   var stage1=document.getElementById('stage1');
-  var arrowUp=document.getElementById('nav-up');
-  var arrowHome=document.getElementById('nav-home');
-  var arrowDown=document.getElementById('nav-down');
   var eras=[];
   markers.forEach(function(m){
     eras.push({el:m,pct:parseFloat(m.getAttribute('data-pct')),label:m.getAttribute('data-label')});
@@ -537,11 +551,13 @@ document.addEventListener('DOMContentLoaded',function(){
 
   function getCurrentPageIdx(){
     var pages=getPages();
-    var viewMid=window.scrollY + window.innerHeight/2;
+    var mainLeft=mainEl.getBoundingClientRect().left;
+    var mainScroll=mainEl.scrollLeft;
+    var viewMid=mainScroll + window.innerWidth/2;
     var best=-1,bestDist=1e9;
     pages.forEach(function(p,i){
-      var top=p.getBoundingClientRect().top + window.scrollY;
-      var mid=top + p.offsetHeight/2;
+      var left=p.getBoundingClientRect().left - mainLeft + mainScroll;
+      var mid=left + p.offsetWidth/2;
       var dist=Math.abs(mid-viewMid);
       if(dist<bestDist){bestDist=dist;best=i;}
     });
@@ -554,31 +570,29 @@ document.addEventListener('DOMContentLoaded',function(){
     pages[idx].scrollIntoView({behavior:'smooth'});
   }
 
-  arrowUp.addEventListener('click',function(){
-    scrollToPage(getCurrentPageIdx()-1);
-  });
-  arrowHome.addEventListener('click',function(){
-    scrollToPage(0);
-  });
-  arrowDown.addEventListener('click',function(){
-    scrollToPage(getCurrentPageIdx()+1);
-  });
-
-  function updateArrows(){
-    var idx=getCurrentPageIdx();
-    var pages=getPages();
-    if(idx<=0)arrowUp.classList.add('hidden');
-    else arrowUp.classList.remove('hidden');
-    if(idx>=pages.length-1)arrowDown.classList.add('hidden');
-    else arrowDown.classList.remove('hidden');
-  }
 
   var lastEraIdx=0;
 
+  var mainEl=document.querySelector('.main');
+  var hPrev=document.querySelector('.h-nav-prev');
+  var hHome=document.querySelector('.h-nav-home');
+  var hNext=document.querySelector('.h-nav-next');
+  hPrev.addEventListener('click',function(){scrollToPage(getCurrentPageIdx()-1);});
+  hHome.addEventListener('click',function(){scrollToPage(0);});
+  hNext.addEventListener('click',function(){scrollToPage(getCurrentPageIdx()+1);});
+  function updateNavButtons(){
+    var idx=getCurrentPageIdx();
+    var pages=getPages();
+    if(idx<=0)hPrev.classList.add('hidden');
+    else hPrev.classList.remove('hidden');
+    if(idx>=pages.length-1)hNext.classList.add('hidden');
+    else hNext.classList.remove('hidden');
+  }
+
   function updateIndicator(){
-    var stage1Top=stage1 ? stage1.getBoundingClientRect().top + window.scrollY : 0;
-    var scrollY=window.scrollY;
-    if(scrollY >= stage1Top - 80){
+    var stage1Left=stage1 ? stage1.getBoundingClientRect().left - mainEl.getBoundingClientRect().left + mainEl.scrollLeft : 0;
+    var mainScroll=mainEl.scrollLeft;
+    if(mainScroll >= stage1Left - 80){
       sidebarEl.classList.add('visible');
     }else{
       sidebarEl.classList.remove('visible');
@@ -608,18 +622,24 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 
   updateIndicator();
-  updateArrows();
-  window.addEventListener('scroll',function(){
+  mainEl.addEventListener('scroll',function(){
     updateIndicator();
-    updateArrows();
+    updateNavButtons();
   });
   window.addEventListener('resize',function(){
     updateIndicator();
-    updateArrows();
+    updateNavButtons();
   });
 });
 
 </script>
+
+
+<div class="h-nav">
+  <button class="h-nav-prev" aria-label="上一页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+  <button class="h-nav-home" aria-label="返回首页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></button>
+  <button class="h-nav-next" aria-label="下一页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+</div>
 
 </body>
 </html>
