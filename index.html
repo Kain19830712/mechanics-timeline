@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0072)file:///C:/Users/P14S/WorkBuddy/Claw/mechanics-timeline/index_swipe.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>力学两千年：一场思想的接力</title>
 <style>
@@ -10,7 +10,7 @@
 html{scroll-behavior:smooth;font-size:16px;overflow:hidden}
 body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;user-select:none;height:100vh;overflow:hidden;-webkit-user-select:none;-webkit-touch-callout:none}
 .main{display:flex;flex-direction:row;margin-left:0;align-items:flex-start;overflow-x:scroll;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;height:100vh}
-.h-nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:300;display:flex;gap:20px;pointer-events:none}.h-nav button{width:48px;height:48px;border-radius:50%;background:rgba(92,58,30,.40);color:#e2e8f0;border:none;cursor:pointer;font-size:1.3rem;display:flex;align-items:center;justify-content:center;transition:background .2s,opacity .2s;backdrop-filter:blur(4px);pointer-events:auto}.h-nav button:active{background:rgba(92,58,30,.60)}.h-nav button svg{width:20px;height:20px}.h-nav button.hidden{opacity:0;pointer-events:none}@media(max-width:768px){.h-nav{bottom:16px;gap:16px}.h-nav button{width:44px;height:44px}.h-nav button svg{width:18px;height:18px}}@media(min-width:769px) and (max-width:1024px){html{font-size:18px}}@media(max-width:768px){.main{margin-left:0}.main{display:flex;flex-direction:row}}
+.h-nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:300;display:flex;gap:20px;pointer-events:none}.h-nav button{width:48px;height:48px;border-radius:50%;background:rgba(92,58,30,.50);color:#e2e8f0;border:none;cursor:pointer;font-size:1.3rem;display:flex;align-items:center;justify-content:center;transition:background .2s,opacity .2s;pointer-events:auto}.h-nav button:active{background:rgba(92,58,30,.70)}.h-nav button svg{width:20px;height:20px}.h-nav button.hidden{opacity:0;pointer-events:none}@media(max-width:768px){.h-nav{bottom:16px;gap:16px}.h-nav button{width:44px;height:44px}.h-nav button svg{width:18px;height:18px}}@media(min-width:769px) and (max-width:1024px){html{font-size:18px}}@media(max-width:768px){.main{margin-left:0}.main{display:flex;flex-direction:row}}
 .sidebar{position:fixed;left:0;top:0;width:56px;height:100vh;background:none;display:flex;justify-content:center;z-index:100;opacity:0;transition:opacity .35s}
 .sidebar.visible{opacity:1}
 .sidebar-track{position:relative;width:2px;height:100%}
@@ -59,7 +59,8 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
 .card.revealed .card-core{animation:fadeInUp 1s ease forwards;animation-delay:0s}
 .card.revealed .card-fun{animation:fadeInUp 1s ease forwards;animation-delay:1s}
 .card.revealed .card-insight{animation:fadeInUp 1s ease forwards;animation-delay:2s}
-@media(max-width:768px){.card{padding:1rem;margin:2.5vh 8vw 0 12vw;min-height:94vh;scroll-margin-left:12vw;width:80vw;gap:.5rem;display:flex;flex-direction:column;justify-content:center}.card-portraits{gap:6px}.card-header{gap:6px}.card-chip{font-size:.72rem;padding:3px 10px}.avatar{width:42px;height:42px;font-size:1.1rem}.card-core,.card-fun,.card-insight{font-size:.8rem}.card-figure{font-size:.85rem}}
+.card-tall{justify-content:flex-start;max-height:90vh;overflow-y:auto;padding-top:2rem;scrollbar-width:thin}.card-tall::-webkit-scrollbar{width:4px}.card-tall::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:2px}
+@media(max-width:768px){.card{padding:1rem;margin:2.5vh 8vw 0 12vw;min-height:94vh;scroll-margin-left:12vw;width:80vw;gap:.5rem;display:flex;flex-direction:column;justify-content:center}.card-tall{max-height:94vh;padding-top:1rem}.card-portraits{gap:6px}.card-header{gap:6px}.card-chip{font-size:.72rem;padding:3px 10px}.avatar{width:42px;height:42px;font-size:1.1rem}.card-core,.card-fun,.card-insight{font-size:.8rem}.card-figure{font-size:.85rem}}
 .conclusion{background:#fff;border:1px solid var(--card-border);border-radius:12px;padding:1.5rem;margin:2.5vh 10vw 0 10vw;box-shadow:0 4px 24px rgba(0,0,0,.13);scroll-snap-align:start;scroll-margin-left:10vw;scroll-margin-right:10vw;width:80vw;flex-shrink:0;min-height:90vh;display:flex;flex-direction:column;justify-content:center}
 .conclusion h2{font-size:1.15rem;font-weight:800;margin-bottom:1rem;display:flex;align-items:center;gap:8px;color:var(--text)}
 .conclusion p{font-size:.85rem;line-height:1.7;color:var(--text);font-style:italic}
@@ -103,11 +104,10 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
 <section class="hero">
   <h1>力学两千年：一场思想的接力</h1>
   <div class="author">by YPF</div>
-  <div class="reference">参考书籍：《A History of Mechanics》 René Dugas 1955</div>
   <div class="intro">
-    <p>本文基于《A History of Mechanics》（René Dugas，1955），沿时间顺序梳理力学从古希腊自然哲学到20世纪初相对论与量子力学的演化脉络，按五个阶段展开。每一个定律背后都有一段故事：有人花十几年算数据却因一步算错否掉了正确答案，有人在啤酒厂里搅水测热量被当成怪人，也有人至死没等到自己的理论被认可。往下翻，看看这些公式是怎么被写出来的。</p>
+    <p>沿时间顺序梳理力学从古希腊自然哲学到20世纪初相对论与量子力学的演化脉络，按五个阶段展开。每一个定律背后都有一段故事：有人花十几年算数据却因一步算错否掉了正确答案，有人在啤酒厂里搅水测热量被当成怪人，也有人至死没等到自己的理论被认可。往下翻，看看这些公式是怎么被写出来的。<br><br>共35页，预计阅读时间约30分钟</p>
   </div>
-  <div class="scroll-hint" onclick="document.getElementById('overview').scrollIntoView({behavior:'smooth'})">↓</div>
+  <div class="scroll-hint" onclick="document.getElementById(&#39;overview&#39;).scrollIntoView({behavior:&#39;smooth&#39;})">↓</div>
 </section>
 
 <section id="overview">
@@ -154,7 +154,7 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
   </div>
 </section>
 
-<div class="stage-separator">⚡ 现在开始<br>跟着千年脚步，看力学如何从&#8220;为什么会动&#8221;<br>长成人类最精密的思想武器</div>
+<div class="stage-separator">⚡ 现在开始<br>跟着千年脚步，看力学如何从“为什么会动”<br>长成人类最精密的思想武器</div>
 
 <h2 class="stage-title" id="stage1">阶段一：起源与奠基<br>（公元前4世纪 — 17世纪初）</h2>
 <div class="card">
@@ -166,9 +166,9 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
     <span class="card-chip">希腊科学</span>
     <span class="card-figure">亚里士多德 &amp; 阿基米德</span>
   </div>
-  <div class="card-core">1. 亚里士多德（Aristotle，384-322 B.C.）：将力学融入自然哲学体系，提出「力=重量/质量×速度」的动力学定律，定性描述自由落体「重量与下落时间成反比」的规律，区分自然运动（如重物下落）与暴力运动（如抛体运动），主张地心说，认为地球位于宇宙中心，重物趋向地心是自然运动，同时提出虚速度原理的早期雏形，其理论主导西方力学近2000年<br>2. 阿基米德（Archimedes，287-212 B.C.）：首次将静力学构建为独立理论科学，基于8条实验公理（如等重等距则平衡、等重不等距则向长力臂侧倾斜等）通过数学演绎证明杠杆原理，提出浮力原理（浸没在流体中的物体受到的浮力等于排开流体的重量），系统计算三角形、抛物线段等几何图形的重心，是经典静力学的基础</div>
-  <div class="card-fun">亚里士多德的理论被中世纪经院学者奉为权威，甚至到了14世纪，学者们还在纠结「抛出去的石头为什么不会立刻掉下来」，直到布里丹提出冲量理论才打破这个困局；阿基米德的杠杆原理被后世演绎出「给我一个支点，我能撬动地球」的名言，不过他本人更在意浮力和重心计算，曾用浮力原理帮国王鉴别王冠是否掺假</div>
-  <div class="card-insight">亚里士多德的动力学错得离谱，却统治了西方力学近两千年——一个错误答案被当成标准答案用了二十个世纪，可见"信权威"有多危险。阿基米德走了完全不同的路：从实验出发，用数学证明，两千多年前就奠定了科学方法论的基础。两人同属希腊时代，一个靠权威统治思想，一个靠实证改变世界——科学史上最早的岔路口，在这个时代就已经出现了。</div>
+  <div class="card-core">1. 亚里士多德（Aristotle，384-322 B.C.）：将力学融入自然哲学，提出「力×速度=重量」的动力学框架，定性描述自由落体规律，区分自然运动与暴力运动，主张地心说，其理论主导西方近2000年<br>2. 阿基米德（Archimedes，287-212 B.C.）：将静力学构建为独立学科，基于实验公理通过数学演绎证明杠杆原理，提出浮力原理，系统计算三角形、抛物线段等几何图形的重心，奠定经典静力学基础</div>
+  <div class="card-fun">亚里士多德的理论被中世纪奉为权威，直到14世纪布里丹提出冲量理论才打破困局；阿基米德的杠杆原理被后世演绎为「给我一个支点，我能撬动地球」，他本人曾用浮力原理帮国王鉴别王冠是否掺假</div>
+  <div class="card-insight">亚里士多德的动力学错得离谱，却统治西方近两千年——错误答案被当成标准答案二十个世纪，「信权威」有多危险可见一斑。阿基米德走了完全不同的路：从实验出发，用数学证明。两人同属希腊时代，一个靠权威统治思想，一个靠实证改变世界——科学史上最早的岔路口，在当时就已出现。</div>
 </div>
 <div class="card">
   <div class="card-portraits">
@@ -393,9 +393,9 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
     <span class="card-chip">流体力学一般方程</span>
     <span class="card-figure">克莱罗 &amp; 达朗贝尔 &amp; 欧拉 &amp; 博尔达</span>
   </div>
-  <div class="card-core">1. 克莱罗（Alexis Clairaut，1743年出版《由流体静力学原理推导的地球形状理论》）：提出流体平衡的条件（压强梯度与外力平衡，即Pdx+Qdy+Rdz为全微分），研究旋转流体质量的形状<br>2. 达朗贝尔（1744年出版《流体平衡与运动专论》）：提出「达朗贝尔佯谬」（理想流体中匀速运动的物体不受阻力），建立流体运动的基本方程框架<br>3. 欧拉（1755年发表理想流体力学论文）：正式提出理想流体力学的一般方程（连续性方程、欧拉运动方程），将流体力学完全纳入分析力学体系<br>4. 博尔达（Jean-Charles de Borda，1767年前后研究流体局部损失）：发现流体流动中的动能损失现象（如突扩管的局部水头损失），完善实际流体力学研究</div>
-  <div class="card-fun">达朗贝尔佯谬刚提出来的时候大家都觉得不可思议：「水流动怎么可能对物体没有阻力？」，直到后来大家意识到这是理想流体的假设导致的，实际流体有粘性才会有阻力，这个「佯谬」反而帮大家搞清楚了理想流体和实际流体的区别；博尔达除了研究流体，还是个军事工程师，发明了博尔达计数法，现在投票选举有时候还在用</div>
-  <div class="card-insight">达朗贝尔佯谬刚出来的时候，大家都觉得荒谬：“水流动怎么可能对物体没阻力？”后来才反应过来这是理想流体的假设导致的结果——不是理论错了，是假设范围画得太宽了。博尔达除了研究流体力学，还搞了个投票计数法叫博尔达计数，到现在选举还有国家在用。做力学研究顺便发明了一套投票规则——学术跨界这件事真的没有上限。</div>
+  <div class="card-core">1. 克莱罗（Alexis Clairaut，1743）：提出流体平衡条件（压强梯度与外力平衡，即Pdx+Qdy+Rdz为全微分），研究旋转流体质量的形状<br>2. 达朗贝尔（1744）：提出「达朗贝尔佯谬」（理想流体中匀速运动的物体不受阻力），建立流体运动的基本方程框架<br>3. 欧拉（1755）：正式提出理想流体力学的一般方程（连续性方程、欧拉运动方程），将流体力学完全纳入分析力学体系<br>4. 博尔达（Jean-Charles de Borda，1767）：发现流体流动中的动能损失现象（如突扩管的局部水头损失），完善实际流体力学研究</div>
+  <div class="card-fun">达朗贝尔佯谬刚提出来时大家觉得不可思议——水流动怎么可能对物体没阻力？后来才意识到这是理想流体的假设所致，实际流体有粘性才会有阻力，这个「佯谬」反而帮大家搞清了理想与实际流体的区别；博尔达还是个军事工程师，发明的博尔达计数法至今还有选举在用</div>
+  <div class="card-insight">达朗贝尔佯谬揭示了一个方法论要点：数学模型可以逻辑自洽地推导出反直觉的结论，逼着我们追问假设的边界在哪里。博尔达从流体动能损失出发，"顺手"发明了一套投票规则——应用力学的思维训练，有时会在完全陌生的领域结出果实。</div>
 </div>
 <div class="card">
   <div class="card-portraits">
@@ -499,7 +499,7 @@ body{font-family:system-ui,"Sarasa Gothic SC","Noto Sans SC","PingFang SC","Micr
     <span class="card-chip">波动力学与量子力学</span>
     <span class="card-figure">德布罗意 &amp; 海森堡 &amp; 薛定谔</span>
   </div>
-  <div class="card-core">1. 德布罗意（Louis de Broglie，1923年提出物质波假设）：认为所有实物粒子都具有波粒二象性，提出德布罗意波长公式λ=h/p<br>2. 海森堡（Werner Heisenberg，1925年建立矩阵力学）、薛定谔（Erwin Schr f6dinger，1926年建立波动力学）：放弃微观过程的连续性与绝对决定论，用概率描述原子尺度的物理现象，提出测不准原理ΔxΔp≥h/4π，是比相对论更激进的范式革命</div>
+  <div class="card-core">1. 德布罗意（Louis de Broglie，1923年提出物质波假设）：认为所有实物粒子都具有波粒二象性，提出德布罗意波长公式λ=h/p<br>2. 海森堡（Werner Heisenberg，1925年建立矩阵力学）、薛定谔（Erwin Schrf6dinger，1926年建立波动力学）：放弃微观过程的连续性与绝对决定论，用概率描述原子尺度的物理现象，提出测不准原理ΔxΔp≥h/4π，是比相对论更激进的范式革命</div>
   <div class="card-fun">德布罗意本来是学历史的，半路转行学物理，博士论文里提出物质波，答辩的时候评委们都觉得太离谱，差点没让他毕业，结果后来这个理论拿了诺贝尔奖；量子力学里的「测不准原理」完全打破了经典力学「只要知道初始条件就能预测所有未来」的决定论观点，连爱因斯坦都接受不了，说「上帝不掷骰子」，和玻尔吵了一辈子，直到去世都没认可量子力学的完备性</div>
   <div class="card-insight">量子力学对力学的冲击比相对论更深：相对论只是修改了时空观，量子力学却从根本上否定了"拉普拉斯妖"——即知道所有初始条件就能预测一切未来的经典决定论。这是力学史上第二次范式转换（第一次是牛顿用数学取代哲学思辨），而这一次，它告诉我们：自然在最底层就是不确定的。</div>
 </div>
@@ -533,7 +533,19 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   },{threshold:0.15});
   document.querySelectorAll('.card').forEach(function(card){revealObserver.observe(card);});
-  /* ---- end card reveal ---- */
+  /* ---- card overflow: tall cards scroll internally ---- */
+  function updateCardTall(){
+    document.querySelectorAll('.card').forEach(function(card){
+      if(card.scrollHeight > card.clientHeight + 2){
+        card.classList.add('card-tall');
+      }else{
+        card.classList.remove('card-tall');
+      }
+    });
+  }
+  updateCardTall();
+  window.addEventListener('resize',updateCardTall);
+  /* ---- end card overflow ---- */
   var sidebarEl=document.querySelector('.sidebar');
   var sidebar=document.querySelector('.sidebar-track');
   var markers=sidebar.querySelectorAll('.sidebar-marker');
@@ -636,10 +648,10 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
 <div class="h-nav">
-  <button class="h-nav-prev" aria-label="上一页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
-  <button class="h-nav-home" aria-label="返回首页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></button>
-  <button class="h-nav-next" aria-label="下一页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <button class="h-nav-prev hidden" aria-label="上一页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+  <button class="h-nav-home" aria-label="返回首页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></button>
+  <button class="h-nav-next" aria-label="下一页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
 </div>
 
-</body>
-</html>
+
+</body></html>
